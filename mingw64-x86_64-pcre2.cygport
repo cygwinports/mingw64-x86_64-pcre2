@@ -1,0 +1,46 @@
+CROSS_HOST="x86_64-w64-mingw32"
+inherit cross
+
+NAME="mingw64-x86_64-pcre2"
+VERSION=10.21
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="Perl Compatible Regular Expressions v2 for Win64 toolchain"
+DESCRIPTION="This package does NOT contain cygwin binaries.  Instead, it
+contains msvcrt-linked binaries (aka 'mingw').  It is for use with the
+mingw64-x86_64-gcc cross compiler, and installs into the
+/usr/x86_64-w64-mingw32/sys-root/mingw/{lib,include} directories."
+HOMEPAGE="http://www.pcre.org/"
+SRC_URI="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre2-${VERSION}.tar.bz2 \
+	 ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre2-${VERSION}.tar.bz2.sig"
+SRC_DIR="pcre2-${VERSION}"
+PATCH_URI="
+	fedora/pcre2-10.10-Fix-multilib.patch
+	fedora/pcre2-10.21-Detect-unmatched-closing-parentheses-in-the-pre-scan.patch
+	fedora/pcre2-10.21-Fix-pcre2test-loop-when-a-callout-is-in-an-initial-l.patch
+	fedora/pcre2-10.21-Fix-workspace-overflow-for-deep-nested-parentheses-w.patch
+	fedora/pcre2-10.21-Fix-typo-in-pcre2_study.patch
+"
+
+NO_AUTOHEADER=1
+CYGCONF_ARGS="
+	--enable-jit \
+	--enable-pcre2-8 \
+	--enable-pcre2-16 \
+	--enable-pcre2-32 \
+	--enable-newline-is-anycrlf \
+	--enable-unicode \
+	--disable-pcre2grep-libbz2 \
+	--disable-pcre2grep-libz \
+	--disable-pcre2test-libedit \
+	--disable-pcre2test-libreadline \
+	--disable-stack-for-recursion
+"
+
+src_install() {
+	cd ${B}
+	# docs already provided by libpcre2-doc
+	cyginstall bin_PROGRAMS= dist_doc_DATA= dist_html_DATA= html_DATA=
+	# install-data-hook creates symlinks here
+	rm -fr ${D}${CROSS_DATADIR}/man/
+}
