@@ -2,7 +2,7 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross
 
 NAME="mingw64-x86_64-pcre2"
-VERSION=10.21
+VERSION=10.22
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Perl Compatible Regular Expressions v2 for Win64 toolchain"
@@ -16,10 +16,6 @@ SRC_URI="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre2-${VERSION}.
 SRC_DIR="pcre2-${VERSION}"
 PATCH_URI="
 	fedora/pcre2-10.10-Fix-multilib.patch
-	fedora/pcre2-10.21-Detect-unmatched-closing-parentheses-in-the-pre-scan.patch
-	fedora/pcre2-10.21-Fix-pcre2test-loop-when-a-callout-is-in-an-initial-l.patch
-	fedora/pcre2-10.21-Fix-workspace-overflow-for-deep-nested-parentheses-w.patch
-	fedora/pcre2-10.21-Fix-typo-in-pcre2_study.patch
 "
 
 NO_AUTOHEADER=1
