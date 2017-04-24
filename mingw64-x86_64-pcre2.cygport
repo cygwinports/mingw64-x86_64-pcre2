@@ -3,7 +3,7 @@ inherit cross
 
 NAME="mingw64-x86_64-pcre2"
 VERSION=10.23
-RELEASE=1
+RELEASE=2
 CATEGORY="Devel"
 SUMMARY="Perl Compatible Regular Expressions v2 for Win64 toolchain"
 DESCRIPTION="This package does NOT contain cygwin binaries.  Instead, it
@@ -20,6 +20,15 @@ PATCH_URI="
 	fedora/pcre2-10.23-Fix-32-bit-non-UTF-property-test-crash.patch
 	fedora/pcre2-10.23-Fix-crash-for-forward-reference-in-lookbehind-with-P.patch
 	fedora/pcre2-10.23-Fix-pcre2test-bug-for-global-match-with-zero-termina.patch
+	fedora/pcre2-10.23-Close-serialization-file-in-pcre2test-after-any-erro.patch
+	fedora/pcre2-10.23-Fix-memory-leak-when-deserializing-invalid-data-Bugz.patch
+	fedora/pcre2-10.23-Fix-NULL-deference-if-pcre2_callout_enumerate-is-cal.patch
+	fedora/pcre2-10.23-Fix-32-bit-error-buffer-size-bug-in-pcre2test-Bugzil.patch
+	fedora/pcre2-10.23-Previous-patch-was-not-quite-complete.patch
+	fedora/pcre2-10.23-Fix-misbehaving-DFA-match-for-possessively-repeated-.patch
+	fedora/pcre2-10.23-Fix-bug-introduced-at-10.21-use-memory-allocator-fro.patch
+	fedora/pcre2-10.23-Fix-character-type-detection-when-32-bit-and-UCP-are.patch
+	fedora/pcre2-10.23-Correct-an-incorrect-cast.patch
 	10.23-mingw.patch
 "
 
